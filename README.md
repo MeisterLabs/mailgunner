@@ -76,3 +76,20 @@ mailgun = Mailgunner::Client.new(api_key: public_key)
 
 response = mailgun.validate_address('john@gmail.com')
 ```
+
+Adding tags
+----------------
+
+If you want to track your emails based on their name in the Mailgun dashboard,
+you can use the tagging functionality like this:
+
+```
+require 'mailgunner/tag_helper'
+
+# In your mailer
+include Mailgunner::TagHelper
+after_filter :add_tag
+```
+
+so when you call Mailer.welcome(user).deliver_now, the email sent will receive
+the 'welcome' tag.
