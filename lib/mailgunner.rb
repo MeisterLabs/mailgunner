@@ -56,9 +56,11 @@ module Mailgunner
     def send_mime(mail)
       to = ['to', Array(mail.destinations).join(',')]
       message = ['message', mail.encoded, {filename: 'message.mime'}]
-      tag = ['o:tag', mail.content_id]
 
-      multipart_post("/v3/#{escape @domain}/messages.mime", [to, message, tag])
+      options = [to, message]
+      options << ['o:tag', mail.content_id] if mail.content_id
+
+      multipart_post("/v3/#{escape @domain}/messages.mime", options)
     end
 
     def delete_message(key)
