@@ -80,8 +80,6 @@ If you want to track your emails based on their name in the Mailgun dashboard,
 you can use the tagging functionality like this:
 
 ```
-require 'mailgunner/tag_helper'
-
 # In your mailer
 include Mailgunner::TagHelper
 after_filter :add_tag
