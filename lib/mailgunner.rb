@@ -5,6 +5,7 @@ require 'mailgunner/version'
 require 'mailgunner/errors'
 require 'mailgunner/delivery_method' if defined?(Mail)
 require 'mailgunner/railtie' if defined?(Rails)
+require 'mailgunner/tag_helper'
 
 module Mailgunner
   class Client
